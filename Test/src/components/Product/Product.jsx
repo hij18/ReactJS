@@ -28,9 +28,9 @@ export default class Product extends Component {
         if (!(/[0-9]/.test(this.state.productPrice))) {
             alert(`${this.state.productPrice} не является числом. Введите, пожалуйста, цену продукта цифрами (от 0 до 9).`);
         }
-        getNewProduct(this.state);
         this.setState({ productName: '' });
         this.setState({ productPrice: '' });
+        getNewProduct(this.state);
     }
     
     render() {

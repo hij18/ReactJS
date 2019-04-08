@@ -31,20 +31,28 @@ export default class Calculator extends Component {
     }
 
     handleProduct = (newProduct) => {
-        this.setState((prevState) => ({
-            allProduct: prevState.allProduct.concat([newProduct]),
-        }));
-        this.setState({
-            isNew: true,
-        });
+        if (newProduct.productName && this.validationPrice(newProduct.productPrice)) {
+            this.setState((prevState) => ({
+                allProduct: prevState.allProduct.concat([newProduct]),
+                isNew: true,
+            }));
+        }
+    }
+
+    validationPrice = (productPrice) => {
+        if (!(/[0-9]/.test(productPrice))) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     render() {
-        const { allProduct } = this.state;
+        const { allProduct, isNew } = this.state;
         return (
             <div className="Calculator">
                 <Product getNewProduct={this.handleProduct}/>
-                <Basket listOfProducts={this.state.allProduct} reRender={this.state.isNew}/>
+                <Basket listOfProducts={allProduct} reRender={isNew}/>
             </div>
         )
     }

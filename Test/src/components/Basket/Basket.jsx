@@ -34,6 +34,7 @@ export default class Basket extends Component {
             extraDiscount: this.getExtraDisc(),
             maxProduct: this.getMaxIndex(),
         });
+        console.log('Tut');
     }
 
     // Находим множитель для определения суммы скидки для каждого товара
